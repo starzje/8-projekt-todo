@@ -1,64 +1,73 @@
 import React from "react";
+import { FaSignInAlt } from "react-icons/fa";
 
 const Register = () => {
   return (
-    <div className='bg-grey-lighter min-h-screen flex flex-col'>
-      <div className='container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2'>
-        <div className='bg-white px-6 py-8 rounded shadow-md text-black w-full'>
-          <h1 className='mb-8 text-3xl text-center'>Sign up</h1>
-          <input
-            type='text'
-            className='block border border-grey-light w-full p-3 rounded mb-4'
-            name='fullname'
-            placeholder='Full Name'
-          />
-          <input
-            type='text'
-            className='block border border-grey-light w-full p-3 rounded mb-4'
-            name='email'
-            placeholder='Email'
-          />
-          <input
-            type='password'
-            className='block border border-grey-light w-full p-3 rounded mb-4'
-            name='password'
-            placeholder='Password'
-          />
-          <input
-            type='password'
-            className='block border border-grey-light w-full p-3 rounded mb-4'
-            name='confirm_password'
-            placeholder='Confirm Password'
-          />
-          <button
-            type='submit'
-            className='w-full text-center py-3 rounded bg-green text-white hover:bg-green-dark focus:outline-none my-1'>
-            Create Account
-          </button>
-          <div className='text-center text-sm text-grey-dark mt-4'>
-            By signing up, you agree to the
+    <div className="min-h-screen flex">
+      <div className="bg-gradient-to-br from-blue-600 hidden to-blue-900 w-4/5 h-screen md:flex justify-center items-center">
+        <img
+          src="../assets/TodoIlustracija.png"
+          alt="Ilustracija za registraciju"
+          className="max-h-screen"
+        />
+      </div>
+      <div className="bg-gradient-to-b from-white to-slate-300 w-full h-screen flex justify-center">
+        {/* form */}
+        <div className="w-[35em] 2xl:min-w-[50em]  px-2 flex justify-center flex-col">
+          <div className="bg-white px-6 py-8 rounded shadow-2xl  text-black w-full">
+            <h1 className="mb-8 text-4xl font-semibold text-center text-blue-600">
+              Novi korisnik
+            </h1>
+            <form>
+              <input
+                type="text"
+                className="block w-full p-3 rounded mb-4 bg-gray-100 focus:bg-white"
+                name="korisnicko_ime"
+                placeholder="Korisničko ime"
+              />
+              <input
+                type="text"
+                className="block bg-gray-100 focus:bg-white w-full p-3 rounded mb-4"
+                name="email"
+                placeholder="Email"
+              />
+              <input
+                type="password"
+                className="block bg-gray-100 focus:bg-white w-full p-3 rounded mb-4"
+                name="lozinka"
+                placeholder="Lozinka"
+              />
+              <input
+                type="password"
+                className="block bg-gray-100 focus:bg-white w-full p-3 rounded mb-4"
+                name="potvrdite_lozinku"
+                placeholder="Potvrdite lozinku"
+              />
+              <button
+                type="submit"
+                className="w-full text-center py-3 rounded bg-green text-white font-semibold tracking-wider bg-blue-600 hover:bg-blue-500 focus:outline-none my-1  flex justify-center items-center"
+              >
+                Registracija
+                <FaSignInAlt className="ml-2" />
+              </button>
+            </form>
+            <div className="text-center text-sm text-gray-400 mt-4">
+              Registracijom prihvaćate uvjete određene našom Politikom o
+              privatnosti.
+            </div>
+          </div>
+          <div className="text-gray-900 mt-6">
+            Imate registiran profil?
             <a
-              className='no-underline border-b border-grey-dark text-grey-dark'
-              href='#'>
-              Terms of Service
-            </a>{" "}
-            and
-            <a
-              className='no-underline border-b border-grey-dark text-grey-dark'
-              href='#'>
-              Privacy Policy
+              className="no-underline border-b border-blue text-blue-600 hover:text-blue-500 px-1 font-semibold"
+              href="../login/"
+            >
+              Logirajte se
             </a>
           </div>
         </div>
-        <div className='text-grey-dark mt-6'>
-          Already have an account?
-          <a
-            className='no-underline border-b border-blue text-blue'
-            href='../login/'>
-            Log in
-          </a>
-          .
-        </div>
+
+        {/* form end */}
       </div>
     </div>
   );
