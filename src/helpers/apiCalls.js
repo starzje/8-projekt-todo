@@ -1,5 +1,5 @@
-export async function postData(url = "", data = {}) {
-  const response = await fetch(url, {
+export async function postData(data = { url: "", username: "", password: "" }) {
+  const response = await fetch(data.url, {
     method: "POST",
     mode: "cors",
     cache: "no-cache",
@@ -11,6 +11,6 @@ export async function postData(url = "", data = {}) {
     referrerPolicy: "no-referrer",
     body: JSON.stringify(data),
   });
-  const data = await response.json();
-  return data;
+  const destiledData = await response.json();
+  return destiledData;
 }

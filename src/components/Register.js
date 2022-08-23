@@ -1,18 +1,46 @@
 import React from "react";
 import { FaSignInAlt } from "react-icons/fa";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { change } from "../store/form/formSlice";
+import { login, register } from "../store/user/userSlice";
 
 const Register = () => {
   const usernameInput = useRef(null);
   const passwordInput = useRef(null);
   const confirmPasswordInput = useRef(null);
+  const errorFeedback = useRef(null);
 
-  const form = useSelector((state) => state.form);
+  const navigate = useNavigate();
+
+  const { form, user } = useSelector((state) => state);
+
+  useEffect(() => {
+    if (user.username !== "") {
+      navigate(`/dashboard`);
+    } else if (user.error !== "") {
+      errorFeedback.current.innerHTML = user.error;
+    }
+  }, [user]);
+
   const dispatch = useDispatch();
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (form.username.length >= 3 && form.password === form.passwordRepeat) {
+      dispatch(
+        register({
+          url: "https://algebra-todoapp.brehak.com/api/auth/register",
+          username: form.username,
+          password: form.password,
+        })
+      );
+    } else {
+      errorFeedback.current.innerHTML =
+        "Dogodila se pogreška. Provjerite je li se šifre podudaraju, te provjerite da ste odabrali username sa minimalno 3 slova.";
+    }
+  };
 
   return (
     <div className='min-h-screen flex'>
@@ -45,18 +73,39 @@ const Register = () => {
                     })
                   )
                 }
+                required
               />
               <input
+                ref={passwordInput}
                 type='password'
                 className='block bg-gray-100 focus:bg-white w-full p-3 rounded mb-4'
-                name='lozinka'
+                value={form.password}
+                onChange={() =>
+                  dispatch(
+                    change({
+                      stateName: "password",
+                      value: passwordInput.current.value,
+                    })
+                  )
+                }
                 placeholder='Lozinka'
+                required
               />
               <input
+                ref={confirmPasswordInput}
                 type='password'
                 className='block bg-gray-100 focus:bg-white w-full p-3 rounded mb-4'
-                name='potvrdite_lozinku'
+                value={form.passwordRepeat}
+                onChange={() =>
+                  dispatch(
+                    change({
+                      stateName: "passwordRepeat",
+                      value: confirmPasswordInput.current.value,
+                    })
+                  )
+                }
                 placeholder='Potvrdite lozinku'
+                required
               />
               <button
                 type='submit'
@@ -65,6 +114,7 @@ const Register = () => {
                 <FaSignInAlt className='ml-2' />
               </button>
             </form>
+            <div className='text-red-500 mb-4 ml-1' ref={errorFeedback}></div>
             <div className='text-center text-sm text-gray-400 mt-4'>
               Registracijom prihvaćate uvjete određene našom Politikom o
               privatnosti.
