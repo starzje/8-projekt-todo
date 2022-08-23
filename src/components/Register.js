@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { change } from "../store/form/formSlice";
-import { login, register } from "../store/user/userSlice";
+import { register } from "../store/user/userSlice";
 
 const Register = () => {
   const usernameInput = useRef(null);
@@ -13,8 +13,8 @@ const Register = () => {
   const errorFeedback = useRef(null);
 
   const navigate = useNavigate();
-
   const { form, user } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (user.username !== "") {
@@ -24,16 +24,13 @@ const Register = () => {
     }
   }, [user]);
 
-  const dispatch = useDispatch();
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form.username.length >= 3 && form.password === form.passwordRepeat) {
       dispatch(
         register({
           url: "https://algebra-todoapp.brehak.com/api/auth/register",
-          username: form.username,
-          password: form.password,
+          payload: { username: form.username, password: form.password },
         })
       );
     } else {

@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import userReducer from "./user/userSlice";
-import formSlice from "./form/formSlice";
+import formReducer from "./form/formSlice";
+import todosReducer from "./todos/todosSlice";
 
 export default configureStore({
   reducer: {
     user: userReducer,
-    form: formSlice,
+    form: formReducer,
+    todos: todosReducer,
   },
 });

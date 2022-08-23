@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { postData } from "../../helpers/apiCalls";
+import { postAuth } from "../../helpers/apiCalls";
 
-export const register = createAsyncThunk("user/register", postData);
+export const register = createAsyncThunk("user/register", postAuth);
+export const login = createAsyncThunk("user/login", postAuth);
 
 const initialState = {
   username: "",
@@ -13,13 +14,6 @@ export const userSlice = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
-    login: (state, action) => {
-      state.username = action.payload.username;
-      state.token = action.payload.token;
-    },
-    fail: (state, action) => {
-      state.error = action.payload.error;
-    },
     logout: (state) => {
       state = initialState;
     },
@@ -39,20 +33,27 @@ export const userSlice = createSlice({
         }
       })
       .addCase(register.rejected, (state, action) => {
-        state.error = action.payload.error;
+        state.error = "Something went wrong. Try again later.";
+      })
+      .addCase(login.pending, (state, action) => {
+        state.error = "proccessing login";
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.error = action.payload.error;
+        } else {
+          state.username = action.payload.username;
+          state.token = action.payload.token;
+          state.error = "";
+        }
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.error = "Something went wrong. Try again later.";
       });
   },
 });
 
-/*
-const login = userSlice.actions.login;
-const fail = userSlice.actions.fail;
-const logout = userSlice.actions.logout;
-
-export {login, fail, logout};
-*/
-
 // Action creators are generated for each case reducer function
-export const { login, fail, logout } = userSlice.actions;
+export const { logout } = userSlice.actions;
 
 export default userSlice.reducer;
