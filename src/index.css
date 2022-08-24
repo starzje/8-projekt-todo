@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .gradient-blu {
+    @apply bg-gradient-to-br from-blue-600 to-blue-900;
+  }
+  .gradient-white {
+    @apply bg-gradient-to-b from-white to-slate-300;
+  }
+
+  .dashboard-blu {
+    @apply h-screen p-5 pt-8 relative duration-300 shadow-slate-900 shadow-xl flex flex-col justify-start items-start;
+  }
+
+  .arrow {
+    @apply absolute cursor-pointer -right-4 top-12 text-4xl text-white bg-blue-700 shadow-blue-900 shadow-sm rounded-full transition duration-700 ease-in-out;
+  }
+
+  .list-items {
+    @apply flex rounded-md p-2 cursor-pointer  text-white font-normal items-center justify-start gap-x-4 mt-4  transition duration-200 hover:bg-blue-500;
+  }
+
+  .dashboard-btn {
+    @apply py-3 transition duration-500 bg-blue-600 hover:bg-blue-500  text-white rounded-lg w-full flex-util font-semibold  gap-2;
+  }
+
+  .logo-icon {
+    @apply text-white text-xl cursor-pointer duration-500;
+  }
+
+  .logo-text {
+    @apply text-white font-medium text-xl duration-500 cursor-pointer;
+  }
+
+  .login-btn {
+    @apply w-full text-center py-3 rounded  text-white font-semibold tracking-wider bg-blue-600 hover:bg-blue-500 focus:outline-none my-1 flex justify-center items-center;
+  }
+
+  .text-highlight {
+    @apply no-underline  text-blue-600 hover:text-blue-500 px-1 font-semibold;
+  }
+
+  .blue-background {
+    @apply hidden w-4/5 h-screen md:flex justify-center items-center;
+  }
+
+  .white-background {
+    @apply w-full h-screen flex justify-center;
+  }
+
+  .form-container {
+    @apply w-[35em] 2xl:min-w-[50em] px-2 flex justify-center flex-col;
+  }
+  .form-background {
+    @apply bg-white px-6 py-8 rounded shadow-2xl  text-black w-full;
+  }
+  .form-text {
+    @apply mb-8 text-4xl font-semibold text-center text-blue-600;
+  }
+  .form-input {
+    @apply block bg-gray-100 focus:bg-white w-full p-3 rounded mb-4;
+  }
+}
+
+@layer utilities {
+  .flex-util {
+    @apply flex justify-center items-center;
+  }
+}
