@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux/es/exports";
+import Sidebar from "./Sidebar";
 
 const ZasticeneRute = () => {
   const logiran = useSelector((state) => {
@@ -8,7 +9,14 @@ const ZasticeneRute = () => {
     else return false;
   });
 
-  return logiran ? <Outlet /> : <Navigate to='/login' replace />;
+  return logiran ? (
+    <div className='flex '>
+      <Sidebar />
+      <Outlet />
+    </div>
+  ) : (
+    <Navigate to='/login' replace />
+  );
 };
 
 export default ZasticeneRute;

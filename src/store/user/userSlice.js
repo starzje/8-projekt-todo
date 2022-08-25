@@ -15,7 +15,9 @@ export const userSlice = createSlice({
   initialState: initialState,
   reducers: {
     logout: (state) => {
-      state = initialState;
+      state.username = initialState.username;
+      state.token = initialState.token;
+      state.error = initialState.error;
     },
   },
   extraReducers: (builder) => {
