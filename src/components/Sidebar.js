@@ -14,6 +14,7 @@ import { FaTasks } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 
 import { useSelector, useDispatch } from "react-redux";
+import { resetAll } from "../store/form/formSlice";
 
 const Sidebar = () => {
   const [openDashboard, setOpenDashboard] = useState(true);
@@ -73,7 +74,12 @@ const Sidebar = () => {
         Korisnik: <span className='font-semibold'>{user.username}</span>
       </div>
       {/* Logout button */}
-      <button className={`dashboard-btn`} onClick={() => dispatch(logout())}>
+      <button
+        className={`dashboard-btn`}
+        onClick={() => {
+          dispatch(logout());
+          dispatch(resetAll());
+        }}>
         <BiLogOut className='text-lg ' /> {openDashboard && "Odjavi se"}
       </button>
     </div>

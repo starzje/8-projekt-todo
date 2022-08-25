@@ -14,7 +14,9 @@ export const formSlice = createSlice({
       state[action.payload.stateName] = action.payload.value;
     },
     resetAll: (state) => {
-      state = initialState;
+      for (const item in state) {
+        state[item] = "";
+      }
     },
   },
 });
