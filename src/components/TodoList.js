@@ -1,14 +1,33 @@
-import React from "react";
 import ListItem from "./ListItem";
 
 const TodoList = () => {
   const itemi = [
-    { title: "djkghkjds", content: "hfbgvsfvbh", status: false },
-    { title: "Drugi", content: "dsajkhfjkdhf", status: true },
+    {
+      title: "Prvi item",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet temporibus ad inventore assumenda dolorum incidunt sed a laudantium voluptatem expedita!",
+      status: false,
+    },
+    {
+      title: "Drugi",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet temporibus ad inventore assumenda dolorum incidunt sed a laudantium voluptatem expedita!",
+      status: true,
+    },
+    {
+      title: "Ovo je treci todo",
+      content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet temporibus ad inventore assumenda dolorum incidunt sed a laudantium voluptatem expedita!`,
+      status: true,
+    },
+    {
+      title: "Neki naslov",
+      content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet temporibus ad inventore assumenda dolorum incidunt sed a laudantium voluptatem expedita!`,
+      status: false,
+    },
   ];
   return (
     <div>
-      <ul className='flex-util flex-col gap-3'>
+      <ul className="flex-col gap-2 flex-util">
         {itemi.map((item, key) => {
           return <ListItem {...item} key={key} />;
         })}

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  overflow: auto;
+}
+
 @layer components {
   .gradient-blu {
     @apply bg-gradient-to-br from-blue-600 to-blue-900;

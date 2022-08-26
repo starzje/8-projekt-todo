@@ -1,9 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaSignInAlt } from "react-icons/fa";
 import { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { change } from "../store/form/formSlice";
 import { register } from "../store/user/userSlice";
 
@@ -41,25 +39,25 @@ const Register = () => {
   };
 
   return (
-    <div className='min-h-screen flex'>
-      <div className='gradient-blu blue-background '>
+    <div className="flex min-h-screen">
+      <div className="gradient-blu blue-background ">
         <img
-          src='../assets/TodoIlustracija.png'
-          alt='Ilustracija za registraciju'
-          className='max-h-screen'
+          src="../assets/TodoIlustracija.png"
+          alt="Ilustracija za registraciju"
+          className="max-h-screen"
         />
       </div>
-      <div className='gradient-white white-background'>
+      <div className="gradient-white white-background">
         {/* form */}
-        <div className='form-container '>
-          <div className='form-background'>
-            <h1 className='form-text'>Novi korisnik</h1>
+        <div className="form-container ">
+          <div className="form-background">
+            <h1 className="form-text">Novi korisnik</h1>
             <form onSubmit={handleSubmit}>
               <input
                 ref={usernameInput}
-                type='text'
-                className='form-input'
-                placeholder='Korisničko ime'
+                type="text"
+                className="form-input"
+                placeholder="Korisničko ime"
                 value={form.username}
                 onChange={() =>
                   dispatch(
@@ -73,8 +71,8 @@ const Register = () => {
               />
               <input
                 ref={passwordInput}
-                type='password'
-                className='form-input'
+                type="password"
+                className="form-input"
                 value={form.password}
                 onChange={() =>
                   dispatch(
@@ -84,13 +82,13 @@ const Register = () => {
                     })
                   )
                 }
-                placeholder='Lozinka'
+                placeholder="Lozinka"
                 required
               />
               <input
                 ref={confirmPasswordInput}
-                type='password'
-                className='block bg-gray-100 focus:bg-white w-full p-3 rounded mb-4'
+                type="password"
+                className="block w-full p-3 mb-4 bg-gray-100 rounded focus:bg-white"
                 value={form.passwordRepeat}
                 onChange={() =>
                   dispatch(
@@ -100,23 +98,23 @@ const Register = () => {
                     })
                   )
                 }
-                placeholder='Potvrdite lozinku'
+                placeholder="Potvrdite lozinku"
                 required
               />
-              <button type='submit' className='login-btn'>
+              <button type="submit" className="login-btn">
                 Registracija
-                <FaSignInAlt className='ml-2' />
+                <FaSignInAlt className="ml-2" />
               </button>
             </form>
-            <div className='text-red-500 mb-4 ml-1' ref={errorFeedback}></div>
-            <div className='text-center text-sm text-gray-400 mt-4'>
+            <div className="mb-4 ml-1 text-red-500" ref={errorFeedback}></div>
+            <div className="mt-4 text-sm text-center text-gray-400">
               Registracijom prihvaćate uvjete određene našom Politikom o
               privatnosti.
             </div>
           </div>
-          <div className='text-gray-900 mt-6'>
+          <div className="mt-6 text-gray-900">
             Imate registiran profil?
-            <Link className='text-highlight' to='../login/'>
+            <Link className="text-highlight" to="../login/">
               Logirajte se
             </Link>
           </div>

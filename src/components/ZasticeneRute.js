@@ -1,4 +1,3 @@
-import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux/es/exports";
 import Sidebar from "./Sidebar";
@@ -10,12 +9,12 @@ const ZasticeneRute = () => {
   });
 
   return logiran ? (
-    <div className='flex '>
+    <div className="flex ">
       <Sidebar />
       <Outlet />
     </div>
   ) : (
-    <Navigate to='/login' replace />
+    <Navigate to="/login" replace />
   );
 };
 
