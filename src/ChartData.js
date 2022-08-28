@@ -1,17 +1,17 @@
 export const UserData = [
   {
     id: 1,
-    isFinished: "Broj ukupnih Todoova ",
+    isFinished: "Broj ukupnih zadataka",
     numberOfItems: 5,
   },
   {
     id: 2,
-    isFinished: "Ne obavljeni Todoovi",
+    isFinished: "Zadaci koji još nisu završeni",
     numberOfItems: 3,
   },
   {
     id: 3,
-    isFinished: "Završeni Todoovi",
+    isFinished: "Završeni zadaci",
     numberOfItems: 2,
   },
 ];

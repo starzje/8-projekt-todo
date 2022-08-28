@@ -33,7 +33,7 @@ const AddTodoPopupModal = ({ formVisible, setFormVisible, toogle }) => {
 
   return (
     <form className="my-8 mx-7 flex-util relative z-[0]">
-      <div className="flex flex-col items-center justify-center w-full p-4 shadow-2xl gradient-blu rounded-3xl ">
+      <div className="flex flex-col items-center justify-center w-full p-7 pb-9 shadow-2xl gradient-blu rounded-3xl ">
         <div className="flex  items-center mb-4 text-white text-2xl">
           <h4 className="font-semibold ">Dodaj Novi Zadatak</h4>
           <IoMdClose

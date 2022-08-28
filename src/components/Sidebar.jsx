@@ -20,8 +20,8 @@ const Sidebar = () => {
 
   const Meni = [
     { title: "Nadzorna ploča", icon: <AiFillHome />, link: "/dashboard" },
-    { title: "Moji zadatci", icon: <RiTaskFill />, link: "/my-todos" },
-    { title: "Svi zadatci", icon: <FaTasks />, link: "/all-todos" },
+    { title: "Moji zadatci", icon: <FaTasks />, link: "/my-todos" },
+    { title: "Svi zadatci", icon: <RiTaskFill />, link: "/all-todos" },
   ];
 
   return (

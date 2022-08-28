@@ -5,9 +5,14 @@
 html,
 body {
   overflow: auto;
+  scroll-behavior: smooth;
 }
 
 @layer components {
+  .nav-btn-blue {
+    @apply px-6 py-3 mt-10 flex-util gap-3 text-white bg-blue-500 shadow-xl rounded-xl hover:bg-blue-400;
+  }
+
   .title-input {
     @apply bg-gray-200 border mb-4 border-blue-800 placeholder-gray-500 placeholder-opacity-60 p-2.5 w-full rounded-2xl outline-none shadow-lg focus:bg-white focus:border-gray-500;
   }

@@ -13,9 +13,9 @@ const AddTodoHeader = () => {
 
   return (
     <div>
-      <div className="gap-5 flex items-center justify-around bg-slate-800 py-5 px-5 md:px-0 ">
+      <div className="gap-5 flex items-center justify-between bg-gradient-to-br from-slate-900 to-slate-700 shadow-lg py-6 px-5 md:px-7 ">
         <h4 className="text-md md:text-xl text-white">
-          Ovdje možete dodavati nove List iteme
+          Ovdje možete upravljati sa svojim zadacima
         </h4>
         <button
           onClick={toggle}
