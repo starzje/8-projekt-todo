@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import ZasticeneRute from "./components/ZasticeneRute";
-import Dashboard from "./components/Dashboard";
-import MyTodos from "./components/MyTodos";
-import AllTodos from "./components/AllTodos";
+import Dashboard from "./components/pages/nadzornaPloca/Dashboard";
+import MyTodos from "./components/pages/mojiZadaci/MyTodos";
+import AllTodos from "./components/pages/sviZadatci/AllTodos";
 import Homepage from "./components/Homepage";
 import Login from "./components/Login";
 import Register from "./components/Register";

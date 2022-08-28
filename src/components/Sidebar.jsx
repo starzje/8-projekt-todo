@@ -29,13 +29,11 @@ const Sidebar = () => {
       <div
         className={`   ${
           openDashboard ? "w-72 2xl:w-96" : "w-20 "
-        } gradient-blu shadow-none dashboard-blu`}
-      ></div>
+        } gradient-blu shadow-none dashboard-blu`}></div>
       <div
-        className={` fixed  ${
+        className={` fixed z-[2] ${
           openDashboard ? "w-72 2xl:w-96" : "w-20 "
-        } gradient-blu dashboard-blu`}
-      >
+        } gradient-blu dashboard-blu`}>
         {/* Toggle dashboard button*/}
         <FiArrowLeftCircle
           className={`arrow ${!openDashboard && "rotate-180"}`}
@@ -59,8 +57,7 @@ const Sidebar = () => {
                 className={({ isActive }) =>
                   `list-items ${!openDashboard && "justify-center"}` +
                   (isActive ? " bg-blue-500 " : "")
-                }
-              >
+                }>
                 {/* ICONS */}
                 <div>{item.icon}</div>
                 {/* MENU TEXT */}
@@ -75,8 +72,7 @@ const Sidebar = () => {
         <div
           className={`text-white mt-auto p-2 mb-5 transition duration-500 ${
             !openDashboard && "scale-0 text-xs opacity-0 "
-          }`}
-        >
+          }`}>
           Korisnik: <span className="font-semibold">{user.username}</span>
         </div>
         {/* Logout button */}
@@ -85,8 +81,7 @@ const Sidebar = () => {
           onClick={() => {
             dispatch(logout());
             dispatch(resetAll());
-          }}
-        >
+          }}>
           <BiLogOut className="text-lg " /> {openDashboard && "Odjavi se"}
         </button>
       </div>

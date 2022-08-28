@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
-import { FaQuestionCircle, FaSignInAlt } from "react-icons/fa";
 import { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { change } from "../store/form/formSlice";
 import { login } from "../store/user/userSlice";
+
+// react icons
+import { FaQuestionCircle, FaSignInAlt } from "react-icons/fa";
 
 const Login = () => {
   const usernameInput = useRef(null);

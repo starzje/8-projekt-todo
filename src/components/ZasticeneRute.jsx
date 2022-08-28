@@ -8,7 +8,7 @@ const ZasticeneRute = () => {
     else return false;
   });
 
-  return logiran ? (
+  return !logiran ? (
     <div className="flex ">
       <Sidebar />
       <Outlet />

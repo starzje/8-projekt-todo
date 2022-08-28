@@ -1,9 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
-import { FaSignInAlt } from "react-icons/fa";
 import { useRef, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { change } from "../store/form/formSlice";
 import { register } from "../store/user/userSlice";
+
+//react icons
+import { FaSignInAlt } from "react-icons/fa";
 
 const Register = () => {
   const usernameInput = useRef(null);
