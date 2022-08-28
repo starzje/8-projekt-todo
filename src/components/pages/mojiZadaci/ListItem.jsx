@@ -10,19 +10,17 @@ const ListItem = ({ title, content, status }) => {
   return (
     <li className="flex flex-col w-full mb-10 shadow-2xl shadow-gray-400 h-fit rounded-t-3xl rounded-b-3xl">
       {/* Gornji dio todo kartice  */}
-      <div className="group ">
+      <div
+        className="group"
+        role="button"
+        onClick={() => setTaskVisible(!taskVisible)}>
         <div
-          role="button"
-          onClick={() => setTaskVisible(!taskVisible)}
           className={`${
             status
               ? "bg-green-600 group-hover:bg-green-500"
               : "bg-blue-600 group-hover:bg-blue-500"
           } cursor-pointer transition duration-200 w-full rounded-t-3xl h-5`}></div>
-        <div
-          role="button"
-          onClick={() => setTaskVisible(!taskVisible)}
-          className="dodaj-task-btn">
+        <div className="dodaj-task-btn">
           <div
             className={
               "pr-5 text-xl group-hover:text-slate-400 text-slate-500"
@@ -54,7 +52,6 @@ const ListItem = ({ title, content, status }) => {
               ) : (
                 <button className="obavljeno-btn">Označi kao obavljeno</button>
               )}
-
               <button className="izbrisi-btn">Izbriši</button>
             </div>
           </>

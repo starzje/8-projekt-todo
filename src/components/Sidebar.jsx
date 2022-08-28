@@ -42,9 +42,12 @@ const Sidebar = () => {
         {/* Logo container*/}
         <div className="gap-4 flex-util ">
           <GiAbstract052
-            className={`logo-icon ${!openDashboard && "scale-0 opacity-0 "}`}
+            className={`logo-icon ${
+              !openDashboard && "scale-0 opacity-0 -rotate-180  "
+            }`}
           />
-          <h1 className={`logo-text ${!openDashboard && "scale-0 opacity-0 "}`}>
+          <h1
+            className={`logo-text ${!openDashboard && "scale-0 opacity-0   "}`}>
             TodoApp
           </h1>
         </div>

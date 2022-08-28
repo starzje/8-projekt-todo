@@ -10,6 +10,7 @@ const Dashboard = () => {
   // iscrtavanje charta
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.isFinished),
+
     datasets: [
       {
         label: "Todo Lista",
