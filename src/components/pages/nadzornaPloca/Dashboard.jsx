@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addTodo } from "../../../store/todos/todosSlice";
+// import { addTodo } from "../../../store/todos/todosSlice";
 
 // chartJS
 import { UserData } from "../../../ChartData";
 import PieChart from "./PieChart";
 
 const Dashboard = () => {
-  const { user } = useSelector((state) => state);
+  // const { user } = useSelector((state) => state);
 
   // iscrtavanje charta
   const [userData, setUserData] = useState({
