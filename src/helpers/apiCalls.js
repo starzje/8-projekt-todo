@@ -31,9 +31,14 @@ export async function fetchTodo(
     referrerPolicy: "no-referrer",
   };
 
-  if (data.method === "POST") options.body = JSON.stringify(data.payload);
+  if (data.method !== "GET") options.body = JSON.stringify(data.payload);
 
   const response = await fetch(data.url, options);
   const destiledData = await response.json();
+
+  if (data.method === "DELETE") {
+    destiledData.deletionID = data.payload.id;
+  }
+
   return destiledData;
 }

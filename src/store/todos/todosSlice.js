@@ -3,6 +3,8 @@ import { fetchTodo } from "../../helpers/apiCalls";
 
 export const addTodo = createAsyncThunk("todos/addTodo", fetchTodo);
 export const getMyTodos = createAsyncThunk("todos/getMyTodos", fetchTodo);
+export const changeMyTodo = createAsyncThunk("todos/changeMyTodo", fetchTodo);
+export const deleteMyTodo = createAsyncThunk("todos/deleteMyTodo", fetchTodo);
 
 const initialState = {
   myTodos: [],
@@ -21,8 +23,8 @@ export const todosSlice = createSlice({
         state.error = "proccessing creating new todo";
       })
       .addCase(addTodo.fulfilled, (state, action) => {
-        if (action.payload.err) {
-          state.error = action.payload.err;
+        if (action.payload.err || action.payload.error) {
+          state.error = action.payload.err || action.payload.error;
         } else {
           state.feedback = action.payload;
           state.myTodos.push(action.payload.todo);
@@ -36,14 +38,48 @@ export const todosSlice = createSlice({
         state.error = "proccessing fetching of my todos";
       })
       .addCase(getMyTodos.fulfilled, (state, action) => {
-        if (action.payload.err) {
-          state.error = action.payload.err;
+        if (action.payload.err || action.payload.error) {
+          state.error = action.payload.err || action.payload.error;
         } else {
           state.myTodos = action.payload.todos;
           state.error = "";
         }
       })
       .addCase(getMyTodos.rejected, (state) => {
+        state.error = "Something went wrong. Try again later.";
+      })
+      .addCase(changeMyTodo.pending, (state) => {
+        state.error = "proccessing changing of todo";
+      })
+      .addCase(changeMyTodo.fulfilled, (state, action) => {
+        if (action.payload.err || action.payload.error) {
+          state.error = action.payload.err || action.payload.error;
+        } else {
+          let index = state.myTodos.findIndex(
+            (item) => item._id === action.payload.todo._id
+          );
+          state.myTodos[index] = action.payload.todo;
+          state.error = "";
+        }
+      })
+      .addCase(changeMyTodo.rejected, (state) => {
+        state.error = "Something went wrong. Try again later.";
+      })
+      .addCase(deleteMyTodo.pending, (state) => {
+        state.error = "proccessing deleting of my todo";
+      })
+      .addCase(deleteMyTodo.fulfilled, (state, action) => {
+        if (action.payload.err || action.payload.error) {
+          state.error = action.payload.err || action.payload.error;
+        } else {
+          let index = state.myTodos.findIndex(
+            (item) => item._id === action.payload.deletionID
+          );
+          state.myTodos.splice(index, 1);
+          state.error = "";
+        }
+      })
+      .addCase(deleteMyTodo.rejected, (state) => {
         state.error = "Something went wrong. Try again later.";
       });
   },
