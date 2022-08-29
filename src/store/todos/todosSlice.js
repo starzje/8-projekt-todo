@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchTodo } from "../../helpers/apiCalls";
 
 export const addTodo = createAsyncThunk("todos/addTodo", fetchTodo);
-export const getMyTodos = createAsyncThunk("todos/getMyTodos", fetchTodo);
+export const getTodos = createAsyncThunk("todos/getTodos", fetchTodo);
 export const changeMyTodo = createAsyncThunk("todos/changeMyTodo", fetchTodo);
 export const deleteMyTodo = createAsyncThunk("todos/deleteMyTodo", fetchTodo);
 
@@ -34,18 +34,21 @@ export const todosSlice = createSlice({
       .addCase(addTodo.rejected, (state) => {
         state.error = "Something went wrong. Try again later.";
       })
-      .addCase(getMyTodos.pending, (state) => {
+      .addCase(getTodos.pending, (state) => {
         state.error = "proccessing fetching of my todos";
       })
-      .addCase(getMyTodos.fulfilled, (state, action) => {
+      .addCase(getTodos.fulfilled, (state, action) => {
         if (action.payload.err || action.payload.error) {
           state.error = action.payload.err || action.payload.error;
+        } else if (action.payload.all) {
+          state.todos = action.payload.todos;
+          state.error = "";
         } else {
           state.myTodos = action.payload.todos;
           state.error = "";
         }
       })
-      .addCase(getMyTodos.rejected, (state) => {
+      .addCase(getTodos.rejected, (state) => {
         state.error = "Something went wrong. Try again later.";
       })
       .addCase(changeMyTodo.pending, (state) => {

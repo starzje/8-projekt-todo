@@ -1,16 +1,16 @@
 import ListItem from "./ListItem";
 import { useSelector, useDispatch } from "react-redux";
-import { getMyTodos } from "../../../store/todos/todosSlice";
+import { getTodos } from "../../../store/todos/todosSlice";
 import { useEffect } from "react";
 
-const TodoList = () => {
+const TodoList = ({ link, imePodstanja }) => {
   const { todos, user } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(
-      getMyTodos({
-        url: "https://algebra-todoapp.brehak.com/api/todoOwn",
+      getTodos({
+        url: link,
         method: "GET",
         token: user.token,
         payload: {},
@@ -21,7 +21,7 @@ const TodoList = () => {
   return (
     <div className='p-7'>
       <ul className='flex-col gap-2 flex-util'>
-        {todos.myTodos.map((item) => {
+        {todos[imePodstanja].map((item) => {
           return <ListItem {...item} user={user} key={item._id} />;
         })}
       </ul>
