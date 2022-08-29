@@ -19,8 +19,8 @@ const TodoList = ({ link, imePodstanja }) => {
   }, []);
 
   return (
-    <div className='p-7'>
-      <ul className='flex-col gap-2 flex-util'>
+    <div className="p-7 w-full">
+      <ul className="flex-col gap-2 flex-util">
         {todos[imePodstanja].map((item) => {
           return <ListItem {...item} user={user} key={item._id} />;
         })}
