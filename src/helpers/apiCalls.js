@@ -18,7 +18,7 @@ export async function postAuth(data = { url: "", payload: {} }) {
 export async function fetchTodo(
   data = { url: "", method: "", token: "", payload: {} }
 ) {
-  const response = await fetch(data.url, {
+  let options = {
     method: data.method,
     mode: "cors",
     cache: "no-cache",
@@ -29,8 +29,11 @@ export async function fetchTodo(
     },
     redirect: "follow",
     referrerPolicy: "no-referrer",
-    body: JSON.stringify(data.payload),
-  });
+  };
+
+  if (data.method === "POST") options.body = JSON.stringify(data.payload);
+
+  const response = await fetch(data.url, options);
   const destiledData = await response.json();
   return destiledData;
 }

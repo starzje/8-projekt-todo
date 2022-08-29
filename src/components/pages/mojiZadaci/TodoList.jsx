@@ -1,34 +1,27 @@
 import ListItem from "./ListItem";
+import { useSelector, useDispatch } from "react-redux";
+import { getMyTodos } from "../../../store/todos/todosSlice";
+import { useEffect } from "react";
 
 const TodoList = () => {
-  const itemi = [
-    {
-      title: "Prvi item",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet temporibus ad inventore assumenda dolorum incidunt sed a laudantium voluptatem expedita!",
-      status: false,
-    },
-    {
-      title: "Drugi",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet temporibus ad inventore assumenda dolorum incidunt sed a laudantium voluptatem expedita!",
-      status: true,
-    },
-    {
-      title: "Ovo je treci todo",
-      content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet temporibus ad inventore assumenda dolorum incidunt sed a laudantium voluptatem expedita!`,
-      status: true,
-    },
-    {
-      title: "Neki naslov",
-      content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet temporibus ad inventore assumenda dolorum incidunt sed a laudantium voluptatem expedita!`,
-      status: false,
-    },
-  ];
+  const { todos, user } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(
+      getMyTodos({
+        url: "https://algebra-todoapp.brehak.com/api/todoOwn",
+        method: "GET",
+        token: user.token,
+        payload: {},
+      })
+    );
+  }, []);
+
   return (
-    <div className="p-7">
-      <ul className="flex-col gap-2 flex-util">
-        {itemi.map((item, key) => {
+    <div className='p-7'>
+      <ul className='flex-col gap-2 flex-util'>
+        {todos.myTodos.map((item, key) => {
           return <ListItem {...item} key={key} />;
         })}
       </ul>
