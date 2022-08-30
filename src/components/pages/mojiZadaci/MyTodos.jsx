@@ -7,6 +7,7 @@ const MyTodos = () => (
     <h2 className="pt-5 pb-6 mt-3 text-3xl font-semibold tracking-wider text-center">
       Moji zadatci:
     </h2>
+
     <TodoList
       link="https://algebra-todoapp.brehak.com/api/todoOwn"
       imePodstanja="myTodos"
