@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/starzje/8-projekt-todo/static/css/main.3cd5afa3.css",
+    "main.js": "/starzje/8-projekt-todo/static/js/main.9efddf91.js",
+    "index.html": "/starzje/8-projekt-todo/index.html",
+    "main.3cd5afa3.css.map": "/starzje/8-projekt-todo/static/css/main.3cd5afa3.css.map",
+    "main.9efddf91.js.map": "/starzje/8-projekt-todo/static/js/main.9efddf91.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3cd5afa3.css",
+    "static/js/main.9efddf91.js"
+  ]
+}
