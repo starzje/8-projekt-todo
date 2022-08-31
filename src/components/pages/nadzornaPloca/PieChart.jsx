@@ -2,7 +2,6 @@ import { Doughnut } from "react-chartjs-2";
 import { useSelector, useDispatch } from "react-redux";
 import { getTodos } from "../../../store/todos/todosSlice";
 import { useEffect } from "react";
-// chartJS
 
 function PieChart() {
   const { todos, user } = useSelector((state) => state);
