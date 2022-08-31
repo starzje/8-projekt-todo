@@ -12,6 +12,14 @@ import { RiTaskFill } from "react-icons/ri";
 import { FaTasks } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 
+function fetchSong(url) {
+  fetch(url)
+    .then((response) => response.json())
+    .then(function (data) {
+      console.log(data);
+    });
+}
+
 const Sidebar = () => {
   const [openDashboard, setOpenDashboard] = useState(true);
 
@@ -37,10 +45,27 @@ const Sidebar = () => {
         {/* Toggle dashboard button*/}
         <FiArrowLeftCircle
           className={`arrow ${!openDashboard && "rotate-180"}`}
-          onClick={() => setOpenDashboard(!openDashboard)}
+          onClick={() => {
+            let user = "mike6715b";
+            let repo = "MERN-ChatApp";
+            let repoEndpoint = `https://api.github.com/users/${user}/repos`;
+            let userEndpoint = `https://api.github.com/users/${user}`;
+            fetchSong(repoEndpoint, {
+              method: "GET",
+              mode: "cors",
+              cache: "no-cache",
+              credentials: "same-origin",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              redirect: "follow",
+              referrerPolicy: "no-referrer",
+            });
+            setOpenDashboard(!openDashboard);
+          }}
         />
         {/* Logo container*/}
-        <div className="gap-4 flex-util ">
+        <div className='gap-4 flex-util '>
           <GiAbstract052
             className={`logo-icon ${
               !openDashboard && "scale-0 opacity-0 -rotate-180  "
@@ -52,7 +77,7 @@ const Sidebar = () => {
           </h1>
         </div>
         {/* Menu items */}
-        <ul className="w-full pt-6 mt-3">
+        <ul className='w-full pt-6 mt-3'>
           {Meni.map((item, index) => (
             <li key={index}>
               <NavLink
@@ -76,7 +101,7 @@ const Sidebar = () => {
           className={`text-white mt-auto p-2 mb-5 transition duration-500 ${
             !openDashboard && "scale-0 text-xs opacity-0 "
           }`}>
-          Korisnik: <span className="font-semibold">{user.username}</span>
+          Korisnik: <span className='font-semibold'>{user.username}</span>
         </div>
         {/* Logout button */}
         <button
@@ -85,7 +110,7 @@ const Sidebar = () => {
             dispatch(logout());
             dispatch(resetAll());
           }}>
-          <BiLogOut className="text-lg " /> {openDashboard && "Odjavi se"}
+          <BiLogOut className='text-lg ' /> {openDashboard && "Odjavi se"}
         </button>
       </div>
     </>
