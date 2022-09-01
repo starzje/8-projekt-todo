@@ -21,13 +21,9 @@ function PieChart() {
 
   let data = {
     labels: [
-      `Broj ukupnih zadataka : ${todos.myTodos.length}`,
-      `Zadaci koji još nisu završeni : ${
-        todos.myTodos.filter((todo) => !todo.status).length
-      }`,
-      `Zadaci koji su završeni : ${
-        todos.myTodos.filter((todo) => todo.status).length
-      }`,
+      `Broj ukupnih zadataka`,
+      `Zadaci koji još nisu završeni`,
+      `Zadaci koji su završeni`,
     ],
     datasets: [
       {

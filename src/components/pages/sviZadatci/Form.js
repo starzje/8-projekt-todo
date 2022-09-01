@@ -1,19 +1,4 @@
-import { change } from "../../../store/form/formSlice";
-import { useSelector, useDispatch } from "react-redux";
-
-const Form = () => {
-  const { form } = useSelector((state) => state);
-  const dispatch = useDispatch();
-
-  const handleChange = (e) => {
-    dispatch(change({ stateName: "search", value: e.target.value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(form.search);
-  };
-
+const Form = ({ handleSubmit, handleChange }) => {
   return (
     <form onSubmit={handleSubmit} className="flex-util">
       <input
